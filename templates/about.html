@@ -37,30 +37,15 @@
     <div class="mt-6">
         <h2 class="text-2xl font-semibold text-purple-800 dark:text-purple-400">Skills</h2>
         <div class="mt-4 bg-gray-300 dark:bg-purple-900 p-4 rounded-lg">
+            {% for skill in skill%}
             <div class="mb-4">
-                <p>Web Development (Flask, Django) <span class="float-right">50%</span></p>
+                <p>{{skill.title}} <span class="float-right">{{skill.complete}}%</span></p>
                 <div class="w-full bg-gray-500 rounded-full h-2">
-                    <div class="bg-purple-500 h-2 rounded-full" style="width: 50%;"></div>
+                    <div class="bg-purple-500 h-2 rounded-full" style="width: {{skill.complete}}%;"></div>
                 </div>
             </div>
-            <div class="mb-4">
-                <p>DSA in C++ <span class="float-right">60%</span></p>
-                <div class="w-full bg-gray-500 rounded-full h-2">
-                    <div class="bg-purple-500 h-2 rounded-full" style="width: 60%;"></div>
-                </div>
-            </div>
-            <div class="mb-4">
-                <p>Numpy, Matplotlib, Pandas <span class="float-right">90%</span></p>
-                <div class="w-full bg-gray-500 rounded-full h-2">
-                    <div class="bg-purple-500 h-2 rounded-full" style="width: 90%;"></div>
-                </div>
-            </div>
-            <div>
-                <p>Scikit-learn, TensorFlow <span class="float-right">50%</span></p>
-                <div class="w-full bg-gray-500 rounded-full h-2">
-                    <div class="bg-purple-500 h-2 rounded-full" style="width: 50%;"></div>
-                </div>
-            </div>
+            {% endfor %}
+            
         </div>
     </div>
 </div>

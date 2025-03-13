@@ -17,7 +17,11 @@ class Project(db.Model):
     project_link = db.Column(db.String(400), nullable=False)
     catagory = db.Column(db.String(100), nullable=False)
     catagory_show = db.Column(db.String(100), nullable=False)
-
+class Skill(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    complete = db.Column(db.String(50), nullable=False)
+    
 class Certificate(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
@@ -62,15 +66,21 @@ def admin():
                 category=request.form['category']
             )
             db.session.add(new_resource)
-        
+        elif form_type == 'skill':
+            new_resource = Skill(
+                title=request.form['title'],
+                complete=request.form['complete'],
+                
+            )
+            db.session.add(new_resource)
         db.session.commit()
         return redirect(url_for('admin'))
     
     projects = Project.query.all()
     certificates = Certificate.query.all()
     resources = Resource.query.all()
-    
-    return render_template('admin.html', projects=projects, certificates=certificates, resources=resources)
+    skill = Skill.query.all()
+    return render_template('admin.html', projects=projects, certificates=certificates, resources=resources,skill=skill)
 
 @app.route('/delete/<table>/<int:id>', methods=['POST'])
 def delete_entry(table, id):
@@ -80,6 +90,8 @@ def delete_entry(table, id):
         entry = Certificate.query.get_or_404(id)
     elif table == 'resource':
         entry = Resource.query.get_or_404(id)
+    elif table == 'skill':
+        entry = Skill.query.get_or_404(id)
     else:
         return redirect(url_for('admin'))
     
@@ -96,6 +108,8 @@ def update_entry(table, id):
         entry = Certificate.query.get_or_404(id)
     elif table == 'resource':
         entry = Resource.query.get_or_404(id)
+    elif table == 'skill':
+        entry = Skill.query.get_or_404(id)
     else:
         return redirect(url_for('admin'))
     
@@ -113,7 +127,8 @@ def home():
     return render_template('home.html')
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    skill = Skill.query.all()
+    return render_template('about.html',skill= skill)
 @app.route('/project')
 def project():
     projects = Project.query.all()

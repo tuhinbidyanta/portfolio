@@ -28,7 +28,13 @@
                 <input type="text" name="name" value="{{ item.name }}" placeholder="Resource Name" class="w-full p-2 border rounded mb-2">
                 <input type="text" name="link" value="{{ item.link }}" placeholder="Resource Link" class="w-full p-2 border rounded mb-2">
                 <input type="text" name="category" value="{{ item.category }}" placeholder="Category" class="w-full p-2 border rounded mb-2">
+            
+            {% elif item_type == 'skill' %}
+                <input type="text" name="title" value="{{ item.title }}" placeholder="Skill Name" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="complete" value="{{ item.complete }}" placeholder="%" class="w-full p-2 border rounded mb-2">
+                
             {% endif %}
+            
             
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Update</button>
         </form>
