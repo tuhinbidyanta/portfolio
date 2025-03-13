@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Admin Dashboard</h1>
+        
+        <!-- Project Form -->
+        <form method="POST" class="mb-6">
+            <input type="hidden" name="form_type" value="project">
+            <h2 class="text-lg font-semibold mb-2">Add Project</h2>
+            <input type="text" name="title" placeholder="Title" class="w-full p-2 border rounded mb-2">
+            <input type="text" name="description" placeholder="Description" class="w-full p-2 border rounded mb-2">
+            <input type="text" name="image_link" placeholder="Image Link" class="w-full p-2 border rounded mb-2">
+            <input type="text" name="project_link" placeholder="Project Link" class="w-full p-2 border rounded mb-2">
+            <input type="text" name="catagory" placeholder="web-developer/data-scientist/geophysicist" class="w-full p-2 border rounded mb-2">
+            <input type="text" name="catagory_show" placeholder="Category Display" class="w-full p-2 border rounded mb-2">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Project</button>
+        </form>
+
+        <!-- Project Table -->
+        <h2 class="text-lg font-semibold mb-2">Projects</h2>
+        <table class="w-full border-collapse border border-gray-300 mb-4">
+            <tr class="bg-gray-200">
+                <th class="border p-2">Title</th>
+                <th class="border p-2">Description</th>
+                <th class="border p-2">Category</th>
+                <th class="border p-2">Actions</th>
+            </tr>
+            {% for project in projects %}
+            <tr>
+                <td class="border p-2">{{ project.title }}</td>
+                <td class="border p-2">{{ project.description }}</td>
+                <td class="border p-2">{{ project.catagory }}</td>
+                <td class="border p-2">
+                    <a href="/update/project/{{ project.id }}" class="bg-yellow-500 text-white px-2 py-1 rounded">Update</a>
+                    <form action="/delete/project/{{ project.id }}" method="POST" style="display:inline;">
+                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Certificate Form -->
+        <form method="POST" class="mb-6">
+            <input type="hidden" name="form_type" value="certificate">
+            <h2 class="text-lg font-semibold mb-2">Add Certificate</h2>
+            <input type="text" name="name" placeholder="Certificate Name" class="w-full p-2 border rounded mb-2">
+            <input type="text" name="image_link" placeholder="Image Link" class="w-full p-2 border rounded mb-2">
+            <input type="text" name="credential_link" placeholder="Credential Link" class="w-full p-2 border rounded mb-2">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Certificate</button>
+        </form>
+
+        <!-- Certificate Table -->
+        <h2 class="text-lg font-semibold mb-2">Certificates</h2>
+        <table class="w-full border-collapse border border-gray-300 mb-4">
+            <tr class="bg-gray-200">
+                <th class="border p-2">Name</th>
+                <th class="border p-2">Actions</th>
+            </tr>
+            {% for certificate in certificates %}
+            <tr>
+                <td class="border p-2">{{ certificate.name }}</td>
+                <td class="border p-2">
+                    <a href="/update/certificate/{{ certificate.id }}" class="bg-yellow-500 text-white px-2 py-1 rounded">Update</a>
+                    <form action="/delete/certificate/{{ certificate.id }}" method="POST" style="display:inline;">
+                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Resource Form -->
+        <form method="POST" class="mb-6">
+            <input type="hidden" name="form_type" value="resource">
+            <h2 class="text-lg font-semibold mb-2">Add Resource</h2>
+            <input type="text" name="name" placeholder="Resource Name" class="w-full p-2 border rounded mb-2">
+            <input type="text" name="link" placeholder="Resource Link" class="w-full p-2 border rounded mb-2">
+            <input type="text" name="category" placeholder="codding/knowledge/geophysics" class="w-full p-2 border rounded mb-2">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Resource</button>
+        </form>
+
+        <!-- Resource Table -->
+        <h2 class="text-lg font-semibold mb-2">Resources</h2>
+        <table class="w-full border-collapse border border-gray-300 mb-4">
+            <tr class="bg-gray-200">
+                <th class="border p-2">Name</th>
+                <th class="border p-2">Category</th>
+                <th class="border p-2">Actions</th>
+            </tr>
+            {% for resource in resources %}
+            <tr>
+                <td class="border p-2"><a href = {{ resource.link }} target= '_blank'>{{ resource.name }}</a></td>
+                <td class="border p-2">{{ resource.category }}</td>
+                <td class="border p-2">
+                    <a href="/update/resource/{{ resource.id }}" class="bg-yellow-500 text-white px-2 py-1 rounded">Update</a>
+                    <form action="/delete/resource/{{ resource.id }}" method="POST" style="display:inline;">
+                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<body class="bg-gray-100 dark:bg-gray-900 dark:text-white">
+    <nav class="bg-white dark:bg-gray-800 p-4 shadow-xl rounded-b-2xl">
+        <div class="container mx-auto flex justify-between items-center">
+            <span class="text-3xl font-bold text-purple-900 dark:text-purple-300">Tuhin Bidyanta</span>
+            <div class="flex items-center space-x-4">
+                <!--<button onclick="toggleTheme()" class="px-4 py-2 bg-purple-900 dark:bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 dark:hover:bg-purple-500">
+                    Toggle Theme
+                </button>-->
+                <button id="menu-btn" class="md:hidden block text-purple-900 dark:text-purple-300 focus:outline-none">
+                    &#9776;
+                </button>
+            </div>
+            <ul id="menu" class="hidden md:flex space-x-6 text-purple-900 dark:text-purple-300">
+                <li><a href="/" class="hover:text-gray-500 dark:hover:text-gray-400">Home</a></li>
+                <li><a href="/about" class="hover:text-gray-500 dark:hover:text-gray-400">Resume</a></li>
+                <li><a href="/project" class="hover:text-gray-500 dark:hover:text-gray-400">Projects</a></li>
+                <li><a href="/resource" class="hover:text-gray-500 dark:hover:text-gray-400">Resource</a></li>
+                <li><a href="/certificate" class="hover:text-gray-500 dark:hover:text-gray-400">Certificates</a></li>
+            </ul>
+        </div>
+        <div id="dropdown" class="hidden md:hidden flex flex-col space-y-2 p-4 bg-white dark:bg-gray-800 text-purple-900 dark:text-purple-300 shadow-md rounded-b-2xl">
+            <a href="/" class="hover:text-gray-500 dark:hover:text-gray-400">Home</a>
+            <a href="/about" class="hover:text-gray-500 dark:hover:text-gray-400">About</a>
+            <a href="/project" class="hover:text-gray-500 dark:hover:text-gray-400">Projects</a>
+            <a href="/resource" class="hover:text-gray-500 dark:hover:text-gray-400">Resource</a>
+            <a href="/certificate" class="hover:text-gray-500 dark:hover:text-gray-400">Certificates</a>
+        </div>
+    </nav>
+    
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const dropdown = document.getElementById('dropdown');
+        
+        menuBtn.addEventListener('click', () => {
+            dropdown.classList.toggle('hidden');
+        });
+    </script>
+</body>

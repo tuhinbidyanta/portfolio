@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Item</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Update {{ item_type }}</h1>
+        
+        <form method="POST">
+            <input type="hidden" name="item_id" value="{{ item.id }}">
+            
+            {% if item_type == 'project' %}
+                <input type="text" name="title" value="{{ item.title }}" placeholder="Title" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="description" value="{{ item.description }}" placeholder="Description" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="image_link" value="{{ item.image_link }}" placeholder="Image Link" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="project_link" value="{{ item.project_link }}" placeholder="Project Link" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="catagory" value="{{ item.catagory }}" placeholder="Category" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="catagory_show" value="{{ item.catagory_show }}" placeholder="Category Display" class="w-full p-2 border rounded mb-2">
+            {% elif item_type == 'certificate' %}
+                <input type="text" name="name" value="{{ item.name }}" placeholder="Certificate Name" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="image_link" value="{{ item.image_link }}" placeholder="Image Link" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="credential_link" value="{{ item.credential_link }}" placeholder="Credential Link" class="w-full p-2 border rounded mb-2">
+            {% elif item_type == 'resource' %}
+                <input type="text" name="name" value="{{ item.name }}" placeholder="Resource Name" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="link" value="{{ item.link }}" placeholder="Resource Link" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="category" value="{{ item.category }}" placeholder="Category" class="w-full p-2 border rounded mb-2">
+            {% endif %}
+            
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Update</button>
+        </form>
+    </div>
+</body>
+</html>

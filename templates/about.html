@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block about %}
+<div class="max-w-6xl mx-auto p-6 bg-gray-100 dark:bg-gray-900  rounded-lg mt-10">
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-purple-900 dark:text-purple-300">Resume</h1>
+        <!--<button onclick="toggleTheme()" class="px-4 py-2 bg-purple-900 text-white rounded-lg shadow-md hover:bg-purple-700">
+            Toggle Theme
+        </button>-->
+    </div>
+
+    <!-- Education Section -->
+    <div class="mt-6">
+        <h2 class="text-2xl font-semibold text-purple-800 dark:text-purple-400">Education</h2>
+        <div class="mt-4 border-l-4 border-purple-500 pl-4">
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold">Indian Institute Of Technology (ISM), Dhanbad</h3>
+                <p class="text-sm text-purple-500">2024 - 2027</p>
+                <p class="text-gray-700 dark:text-gray-300">Studied geophysics with a focus on computational techniques.</p>
+                <span class="mt-2 px-3 py-1 bg-purple-500 text-white rounded-full text-sm">CGPA = 7.76</span>
+            </div>
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold">Chakdah College (Kalyani University)</h3>
+                <p class="text-sm text-purple-500">2021 - 2024</p>
+                <p class="text-gray-700 dark:text-gray-300">Studied physics with an emphasis on computational problem-solving.</p>
+                <span class="mt-2 px-3 py-1 bg-purple-500 text-white rounded-full text-sm">CGPA = 8.87</span>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold">Santipur Municipal High School</h3>
+                <p class="text-sm text-purple-500">2014 - 2021</p>
+                <p class="text-gray-700 dark:text-gray-300">Focused on foundational science courses.</p>
+                <span class="mt-2 px-3 py-1 bg-purple-500 text-white rounded-full text-sm">CGPA = 9.1</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="mt-6">
+        <h2 class="text-2xl font-semibold text-purple-800 dark:text-purple-400">Skills</h2>
+        <div class="mt-4 bg-gray-300 dark:bg-purple-900 p-4 rounded-lg">
+            <div class="mb-4">
+                <p>Web Development (Flask, Django) <span class="float-right">50%</span></p>
+                <div class="w-full bg-gray-500 rounded-full h-2">
+                    <div class="bg-purple-500 h-2 rounded-full" style="width: 50%;"></div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <p>DSA in C++ <span class="float-right">60%</span></p>
+                <div class="w-full bg-gray-500 rounded-full h-2">
+                    <div class="bg-purple-500 h-2 rounded-full" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <p>Numpy, Matplotlib, Pandas <span class="float-right">90%</span></p>
+                <div class="w-full bg-gray-500 rounded-full h-2">
+                    <div class="bg-purple-500 h-2 rounded-full" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div>
+                <p>Scikit-learn, TensorFlow <span class="float-right">50%</span></p>
+                <div class="w-full bg-gray-500 rounded-full h-2">
+                    <div class="bg-purple-500 h-2 rounded-full" style="width: 50%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

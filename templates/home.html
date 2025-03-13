@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block home %}
+
+<div class="max-w-4xl mx-auto p-6 bg-gray-100 dark:bg-gray-900  rounded-lg mt-10">
+    
+    
+
+    <section class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 my-6 ">
+        <div class="flex justify-center items-center">
+        
+            <img src="../static/image/face.jpg" alt="Project 1" style= "height:150px;weidth:150px; border-radius:50%;" >
+            
+            <!--<h1 class="text-3xl font-bold text-purple-900 dark:text-purple-300 text-center">Tuhin Bidyanta</h1>-->
+            
+        </div>
+        <div class ='col-span-2'>
+        <h2 class="text-2xl underline font-semibold text-center md:text-left text-gray-800 dark:text-purple-300">About</h2>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">I am a passionate <span class= 'typing-text'></span></p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">I have experience in web development and GIS applications. Deeply passionate for earth sciences and eager to solve critical challanges using my expertise in programming.I am particularly interested in exploring how AI and ML can be used to solve complex geophysical problems,detect potential zones, optimize exploration process.</p>
+        </div>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <section class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-4">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">Area of Interest</h2>
+            <ul class="list-disc ml-5 text-gray-600 dark:text-gray-300 mt-2">
+                <li>Web Development</li>
+                <li>Geospatial Analysis</li>
+                <li>Seismic Data Interpretation</li>
+                <li>Machine Learning in Geosciences</li>
+            </ul>
+        </section>
+
+        <section class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-4">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">Hobbies</h2>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">In my free time, I enjoy coding, playing chess, photography, and exploring new technologies.</p>
+        </section>
+    </div>
+
+    
+</div>
+{% endblock %}

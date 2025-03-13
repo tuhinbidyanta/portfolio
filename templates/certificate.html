@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block certificate %}
+<div class="max-w-6xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-xl rounded-lg mt-10">
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-purple-900 dark:text-purple-300">Certificates</h1>
+       <!-- <button onclick="toggleTheme()" class="px-4 py-2 bg-purple-900 text-white rounded-lg shadow-md hover:bg-purple-700">
+            Toggle Theme
+        </button>-->
+    </div>
+
+    <!-- Certificate Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <!-- Certificate 1 -->
+         {% for certificate in cer%}
+        <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-4">
+            <img src="{{certificate.image_link}}" alt="Certificate {{certificate.id}}" class="rounded-lg">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-2">{{certificate.name}}</h2>
+            <a href="{{certificate.credential_link}}" class="text-blue-500 hover:underline">View Certificate</a>
+        </div>
+        {% endfor %}
+        <!-- Certificate 2 -->
+        <!--<div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-4">
+            <img src="https://via.placeholder.com/300" alt="Certificate 2" class="rounded-lg">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-2">Machine Learning Certification</h2>
+            <a href="#" class="text-blue-500 hover:underline">View Certificate</a>
+        </div>
+
+        
+        <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-4">
+            <img src="https://via.placeholder.com/300" alt="Certificate 3" class="rounded-lg">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mt-2">Geophysics Training Program</h2>
+            <a href="#" class="text-blue-500 hover:underline">View Certificate</a>
+        </div>-->
+    </div>
+</div>
+{% endblock %} 
