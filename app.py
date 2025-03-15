@@ -33,7 +33,16 @@ class Resource(db.Model):
     name = db.Column(db.String(200), nullable=False)
     link = db.Column(db.String(400), nullable=False)
     category = db.Column(db.String(100), nullable=False)
-
+class Study(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    institute = db.Column(db.String(200),nullable = False)
+    time = db.Column(db.String(50),nullable = False)
+    desc = db.Column(db.String(200),nullable = False)
+    cgpa = db.Column(db.String(20),nullable = False)
+class Interest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    interest = db.Column(db.String(100),nullable = False)
+    
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
@@ -73,6 +82,22 @@ def admin():
                 
             )
             db.session.add(new_resource)
+        elif form_type == 'study_work':
+            new_project = Study(
+                institute=request.form['institute'],
+                time=request.form['time'],
+                desc=request.form['desc'],
+                cgpa=request.form['cgpa'],
+                
+            )
+            db.session.add(new_project)
+        elif form_type == 'interest':
+            new_project = Interest(
+                interest=request.form['interest'],
+                
+                
+            )
+            db.session.add(new_project)
         db.session.commit()
         return redirect(url_for('admin'))
     
@@ -80,7 +105,9 @@ def admin():
     certificates = Certificate.query.all()
     resources = Resource.query.all()
     skill = Skill.query.all()
-    return render_template('admin.html', projects=projects, certificates=certificates, resources=resources,skill=skill)
+    study = Study.query.all()
+    inter = Interest.query.all()
+    return render_template('admin.html',interest=inter,study_work =study, projects=projects, certificates=certificates, resources=resources,skill=skill)
 
 @app.route('/delete/<table>/<int:id>', methods=['POST'])
 def delete_entry(table, id):
@@ -92,6 +119,10 @@ def delete_entry(table, id):
         entry = Resource.query.get_or_404(id)
     elif table == 'skill':
         entry = Skill.query.get_or_404(id)
+    elif table == 'study_work':
+        entry = Study.query.get_or_404(id)
+    elif table == 'interest':
+        entry = Interest.query.get_or_404(id)
     else:
         return redirect(url_for('admin'))
     
@@ -110,6 +141,10 @@ def update_entry(table, id):
         entry = Resource.query.get_or_404(id)
     elif table == 'skill':
         entry = Skill.query.get_or_404(id)
+    elif table == 'study_work':
+        entry = Study.query.get_or_404(id)
+    elif table == 'interest':
+        entry = Interest.query.get_or_404(id)
     else:
         return redirect(url_for('admin'))
     
@@ -124,11 +159,13 @@ def update_entry(table, id):
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    interest = Interest.query.all()
+    return render_template('home.html',inter = interest)
 @app.route('/about')
 def about():
+    study = Study.query.all()
     skill = Skill.query.all()
-    return render_template('about.html',skill= skill)
+    return render_template('about.html',skill= skill,study = study)
 @app.route('/project')
 def project():
     projects = Project.query.all()
@@ -143,7 +180,7 @@ def certificate():
     return render_template('certificate.html', cer = certificates)
 
 if __name__ == '__main__':
-    # with app.app_context():
-    #     db.create_all()
+    with app.app_context():
+        db.create_all()
     # print("Database created successfully!")
     app.run(debug=True)

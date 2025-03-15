@@ -137,8 +137,69 @@
                 </td>
             </tr>
             {% endfor %}
+        </table>
+            <!--study and work-->
+            <form method="POST" class="mb-6">
+                <input type="hidden" name="form_type" value="study_work">
+                <h2 class="text-lg font-semibold mb-2">Add study or work</h2>
+                <input type="text" name="institute" placeholder="Institute name" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="time" placeholder="Period" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="desc" placeholder="Description" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="cgpa" placeholder="CGPA" class="w-full p-2 border rounded mb-2">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
+            </form>
+                <!--  -->
+            <h2 class="text-lg font-semibold mb-2">Study work</h2>
+            <table class="w-full border-collapse border border-gray-300 mb-4">
+                <tr class="bg-gray-200">
+                    <th class="border p-2">Institute</th>
+                    <th class="border p-2">time</th>
+                    <th class="border p-2">description</th>
+                    <th class="border p-2">cgpa</th>
+                    <th class="border p-2">Actions</th>
+                </tr>
+                {% for std in study_work %}
+                <tr>
+                    <td class="border p-2">{{ std.institute }}</td>
+                    <td class="border p-2">{{ std.time }}</td>
+                    <td class="border p-2">{{ std.desc }}</td>
+                    <td class="border p-2">{{ std.cgpa }}</td>
+                    <td class="border p-2">
+                        <a href="/update/study_work/{{ std.id }}" class="bg-yellow-500 text-white px-2 py-1 rounded">Update</a>
+                        <form action="/delete/study_work/{{ std.id }}" method="POST" style="display:inline;">
+                            <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+
         
-    </table>
+            </table>
+            <form method="POST" class="mb-6">
+                <input type="hidden" name="form_type" value="interest">
+                <h2 class="text-lg font-semibold mb-2">Add interest</h2>
+                <input type="text" name="interest" placeholder="interest" class="w-full p-2 border rounded mb-2">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
+            </form>
+                <!-- interest Table -->
+            <h2 class="text-lg font-semibold mb-2">Area of Interest</h2>
+            <table class="w-full border-collapse border border-gray-300 mb-4">
+                <tr class="bg-gray-200">
+                    <th class="border p-2">Name</th>
+                    
+                </tr>
+                {% for inter in interest %}
+                <tr>
+                    <td class="border p-2">{{ inter.interest }}</td>
+                    <td class="border p-2">
+                        <a href="/update/interest/{{ inter.id }}" class="bg-yellow-500 text-white px-2 py-1 rounded">Update</a>
+                        <form action="/delete/interest/{{ inter.id }}" method="POST" style="display:inline;">
+                            <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
 
     </div>
 </body>

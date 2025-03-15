@@ -32,7 +32,14 @@
             {% elif item_type == 'skill' %}
                 <input type="text" name="title" value="{{ item.title }}" placeholder="Skill Name" class="w-full p-2 border rounded mb-2">
                 <input type="text" name="complete" value="{{ item.complete }}" placeholder="%" class="w-full p-2 border rounded mb-2">
-                
+            
+            {% elif item_type == 'study_work' %}
+                <input type="text" name="institute" value="{{ item.institute }}" placeholder="Institute name" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="time" value="{{ item.time }}" placeholder="Period" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="desc" value="{{ item.desc }}" placeholder="Description" class="w-full p-2 border rounded mb-2">
+                <input type="text" name="cgpa" value="{{ item.cgpa }}" placeholder="CGPA" class="w-full p-2 border rounded mb-2">
+            {% elif item_type == 'interest' %}
+                <input type="text" name="interest" value="{{ item.interest }}"  placeholder="interest" class="w-full p-2 border rounded mb-2">
             {% endif %}
             
             
