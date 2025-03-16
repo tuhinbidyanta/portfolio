@@ -10,9 +10,9 @@
 
     <!-- Education Section -->
     <div class="mt-6">
-        <h2 class="text-2xl font-semibold text-purple-800 dark:text-purple-400">Education</h2>
+        <h2 class="text-2xl font-semibold text-purple-800 dark:text-purple-400">Study & Work </h2>
         <div class="mt-4 border-l-4 border-purple-500 pl-4">
-            {% for i in study%}
+            {% for i in study | reverse %}
             <div class="mb-6">
                 <h3 class="text-xl font-semibold">{{i.institute}}</h3>
                 <p class="text-sm text-purple-500">{{i.time}}</p>
